@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<meta content="yes" name="apple-mobile-web-app-capable">
+<!-- 防止网页自动缩放 -->
+<title>信息采集/数据查询</title>
+<link rel="icon" type="image/x-icon" href="/Public/static/images/favicon.ico" />
+<link rel="stylesheet" href="https://b23.tv/XmLj0JZ">
+<link rel="stylesheet" href="https://b23.tv/9zhgVz4">
+<script src="https://b23.tv/B6IXZ8u"></script>
+<script src="https://b23.tv/uTWzxUH"></script>
+<style type="text/css">
+.s_page-header_pic{
+	position:relative;display:table; width:100%;
+}
+.s_page-header_pic .banner-img{
+	position:relative;width:100%;
+}
+.s_page-header_pic .banner-text{
+	position: absolute;top:42%;text-align: center;width: 100%;font-size:22px;color:#fff;
+}
+.s_page-header_color{
+	padding:45px 20px;text-align:center;font-size:22px;color:#fff;
+}
+body,html{
+	background:#F0EFF4;
+	margin: 0;
+	padding:0;
+	height: 100%;
+}
+#wrapper {
+	min-height: 100%;
+	margin-bottom: -40px;
+}
+.ad-list{
+ margin:10px;
+}
+#footer,.push {
+	height:40px;
+	line-height: 40px;
+}
+.cert-box{
+	padding:20px;
+}
+.cert-box .cert-row{
+	margin-bottom:10px;
+}
+.cert-box .cert-row .b-txt{
+	font-weight:bold;
+}
+.weui-input{
+	border: 1px solid #ececec;
+	padding:5px;
+	box-sizing: border-box;
+	height: auto;
+	border-radius: 0;
+}
+.weui-cells {
+    font-size: 14px;
+}
+</style>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ca667b4e604f41172ad66175206437c5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+	<div id="wrapper">
+			<div class="s_page-header_pic">
+		<img class="banner-img" src="htt<ps://www.yichafen.com/Uploads/bg_pics/628b6373985f4.png">
+	</div>		
+<div id="allList" >
+	<div class="weui-cells">
+	 
+	 
+	<a class="weui-cell weui-cell_access" href="https://vdse.bdstatic.com/192d9a98d782d9c74c96f09db9378d93.mp4">
+		<div class="weui-cell__bd">
+			<p style="font-size:16px;">
+				2035年春期期末考试检测			</p>
+			<p style="font-size:14px;color:#999;">2022.07.08</p>		</div>
+		<div class="weui-cell__ft"></div>
+	</a> 
+	</div>
+</div><div class="container" style="font-size:14px;color:#0066FF;text-align:center;padding:20px;">
+	<a href="https://jq.qq.com/?_wv=1027&k=887r8EJs">分享好友</a> | 
+	<a href="https://vdse.bdstatic.com/192d9a98d782d9c74c96f09db9378d93.mp4">新查询提醒</a> | 
+	<a href="https://docs.qq.com/doc/DVUZaS0Zsd0pJeGtW">查看帮助</a>
+</div>
+		<div class="push"></div>
+	</div>
+	<!-- /**e69cace7ab99e68980e69c89e4bba3e7a081e5a48de588b6e887aa796963686166656e2e636f6d**/  -->
+	
+<div id="footer" class="container">
+	<div class="weui-footer">
+	  <p class="weui-footer__text">
+	  	<span>本查询系统使用<a style="text-decoration:underline;" href="https://b23.tv/e3isdAn">小黑子</a>制作</span>
+	  	<a href="/index/certification.html">
+	  					<img width="14px;" style="margin-top:-1px;vertical-align:middle;" src="/Public/static/images/not_verify.png"/>	  	</a>
+	  </p>
+	</div>
+</div>
+
+	
+<script type="text/javascript">
+$("#js_unfold_btn").click(function(){
+	$("#allList").show();
+	$("#preShowList").hide();
+});
+</script>
+
+</body>
+</html>
