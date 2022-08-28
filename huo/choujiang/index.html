@@ -41,14 +41,14 @@
 </head>
 <body>
 <div class="content">
- 
+<audio src="https://music.163.com/song/media/outer/url?id=333750" loop="loop" controls="controls" autoplay="autoplay"></audio>
 </div>
 <div class="button">
     <button type="button" class="choujiang">抽奖</button>
 </div>
 <script>
 $(document).ready(function() {
-    var name = ['罗望娃娃', '土狗抱枕', '飞机票', '小红牌眼镜', '谢谢参与', '10原石', '288冥币', '谢谢参与', '小红歌姬']
+    var name = ['罗望娃娃', '土狗抱枕', '飞机票', '小红牌眼镜', '会员制餐厅入场票', '10原石', '288冥币', '谢谢参与', '小红歌姬']
     for (var i = 1; i <= name.length; i++) {
         $(".content").append('<div id="' + i + '" class="kuai">' + name[i - 1] + '</div>');
     }
@@ -59,7 +59,7 @@ $(document).ready(function() {
         var hh = sum * le;
         var y = 1;
         var x = hh;
-        var times = 12; //调节滚动速度
+        var times = 20; //调节滚动速度
         var rand = parseInt(Math.random() * (x - y + 1) + y); //获取随机数
         var i = Math.ceil(rand / sum); //向上取整
         for (var i = i; i < le; i++) {
