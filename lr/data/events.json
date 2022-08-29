@@ -24,7 +24,7 @@
         "postEvent": "没钱了。",
         "effect": {
             "MNY": -9,
-            "SPR": -0
+            "SPR": -1
         },
         "exclude": "STR>6",
         "branch": [
