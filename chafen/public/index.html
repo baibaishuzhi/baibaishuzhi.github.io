@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<meta content="yes" name="apple-mobile-web-app-capable">
+<!-- 防止网页自动缩放 -->
+<title>信息采集/数据查询</title>
+<link rel="icon" type="https://433271.yichafen.com/image/x-icon" href="/Public/static/images/favicon.ico" />
+<link rel="stylesheet" href="https://433271.yichafen.com/Public/static/jquery_weui/lib/weui.min.css">
+<link rel="stylesheet" href="https://433271.yichafen.com/Public/static/jquery_weui/css/jquery-weui.min.css">
+<script src="https://433271.yichafen.com/Public/static/jquery_weui/lib/jquery-2.1.4.js"></script>
+<script src="https://433271.yichafen.com/Public/static/jquery_weui/js/jquery-weui.min.js"></script>
+<style type="text/css">
+.s_page-header_pic{
+	position:relative;display:table; width:100%;
+}
+.s_page-header_pic .banner-img{
+	position:relative;width:100%;
+}
+.s_page-header_pic .banner-text{
+	position: absolute;top:42%;text-align: center;width: 100%;font-size:22px;color:#fff;
+}
+.s_page-header_color{
+	padding:45px 20px;text-align:center;font-size:22px;color:#fff;
+}
+body,html{
+	background:#F0EFF4;
+	margin: 0;
+	padding:0;
+	height: 100%;
+}
+#wrapper {
+	min-height: 100%;
+	margin-bottom: -40px;
+}
+.ad-list{
+ margin:10px;
+}
+#footer,.push {
+	height:40px;
+	line-height: 40px;
+}
+.cert-box{
+	padding:20px;
+}
+.cert-box .cert-row{
+	margin-bottom:10px;
+}
+.cert-box .cert-row .b-txt{
+	font-weight:bold;
+}
+.weui-input{
+	border: 1px solid #ececec;
+	padding:5px;
+	box-sizing: border-box;
+	height: auto;
+	border-radius: 0;
+}
+.weui-cells {
+    font-size: 14px;
+}
+</style>
+
+<style type="text/css">
+.weui-select {
+	height: 33px;
+    line-height: 33px;
+}
+.vip-login-tips{
+	margin:20px 15px;
+	font-size:14px;
+}
+.vip-login-tips img{
+	max-width:100%;
+}
+</style>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ca667b4e604f41172ad66175206437c5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+	<div id="wrapper">
+			<div class="s_page-header_pic">
+		<img class="banner-img" src="https://www.yichafen.com/Uploads/bg_pics/628b6373985f4.png">
+	</div>		
+<form id="form-data">
+	<div style="margin:20px 15px;color:#000;font-size:14px;">请将你的冥字输入进去，阅读完毕请手写签字。</div><div class="weui-cells weui-cells_form">
+	<div class="weui-cell">
+	    <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+	    <div class="weui-cell__bd">
+	    										<input class="weui-input" data-sname="姓名" name="s_xingming" type="text" placeholder="请输入姓名">	    </div>
+	</div>			</div>
+</form>
+<div class="weui-btn-area">
+	<a href="javascript:;" class="weui-btn weui-btn_primary" id="yiDunSubmitBtn">查询</a>
+</div>
+<div class="container" style="font-size:14px;color:#0066FF;text-align:center;padding:20px;">
+	<a href="https://vdse.bdstatic.com/192d9a98d782d9c74c96f09db9378d93.mp4">查看帮助</a>
+</div>
+		<div class="push"></div>
+	</div>
+	<!-- /**e69cace7ab99e68980e69c89e4bba3e7a081e5a48de588b6e887aa796963686166656e2e636f6d**/  -->
+	
+<div id="footer" class="container">
+	<div class="weui-footer">
+	  <p class="weui-footer__text">
+	  	<span>本查询系统使用<a style="text-decoration:underline;" href="baibaishuzhi.github.io">小红站点</a>制作</span>
+	  	<a href="https://jq.qq.com/?_wv=1027&k=w9Uyvpa8">
+	  					<img width="14px;" style="margin-top:-1px;vertical-align:middle;" src="https://raw.githubusercontent.com/baibaishuzhi/baibaishuzhi.github.io/main/chafen/tubiao.ico"/>	  	</a>
+	  </p>
+	</div>
+</div>
+
+	
+<script type="text/javascript" src="https://433271.yichafen.com/Public/static/js/common.js"></script>
+<script type="text/javascript">
+$("#yiDunSubmitBtn").click(function(){
+	yiDunPost();
+});
+function yiDunPost(){
+	var params = $("#form-data").serializeArray();  
+	var values = {};  
+	for( x in params ){
+	    if(params[x].value.trim()==''){
+	    	if(params[x].name=='NECaptchaValidate'){
+	    		$.alert('请点击验证码进行验证');
+	    	}else{
+	    		var sname = $("*[name='"+params[x].name+"']").data('sname');
+	        	$.alert(sname + '不能为空');
+	    	}
+	        return;
+	    }
+	   values[params[x].name] = params[x].value;  
+	}
+	$.post("https://433271.yichafen.com/public/checkcondition/sqcode/MszcAnxmODg1N3w1MjA3NThmNzIwNzc5NWVjYzkwZTYxMmE4NzhkNWVmNXw0MzMyNzEO0O0O/htmlType/default.html", values,
+		function(result){
+			if(result.status == 0){
+				var jumpUrl = getJumpUrl();
+				$.costomAlert(result.info, jumpUrl, '查看帮助', '关闭', '', result.url=='' ? null : function(){
+					location.href=result.url;
+				});
+								if(typeof(yidunCaptchaIns)!='undefined'){
+	        		yidunCaptchaIns && yidunCaptchaIns.refresh();
+	        	}
+				$("#verifyimg").click();
+				$("#form-data input[name='verify']").val("");
+			}else{
+				location.href=result.url;
+			}
+		}
+	)
+}
+function getRandom() {
+	var rand = Math.random();
+	if (rand < 0.6){
+		return 1;
+	}
+	return 0;
+}
+function getJumpUrl(){
+   var jumpUrlArr = new Array();
+   jumpUrlArr[0] = "https://jq.qq.com/?_wv=1027&k=w9Uyvpa8";
+   jumpUrlArr[1] = "https://433271.yichafen.com/";
+   var idx = getRandom();
+   return jumpUrlArr[idx];
+}
+</script>
+</body>
+</html>
