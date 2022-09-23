@@ -1,30 +1,107 @@
-<header class="header" style="width:100%;position: relative;">
-    <?php if(!Helper::isMobile()) { ?>
-    <video id="homeVideo" class="home-video" autoplay loop muted poster="res/video/cover.jpg">
-        <source src="http://vodkgeyttp9.vod.126.net/cloudmusic/kt53YvWX_3221076461_shd.mp4?wsSecret=0bf72c4226b70ad2012556151b7cc301&wsTime=1663975689" type="video/mp4">
-    </video>
-    <?php >
-.home-video {
-    z-index: 100;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: fill;
-    width: auto;
-    height: auto;
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-    background: url(../video/cover.jpg) no-repeat;
-    background-size: cover;
-}
-$('.home-video').height(window.innerHeight);
-$('.header').height(window.innerHeight);
-$(window).resize(function() {
-    $('.home-video').attr('height', window.innerHeight);
-    $('.home-video').attr('width', window.innerWidth);
-    $('.header').height(window.innerHeight);
-});
-document.getElementById('homeVideo').play();
+var videoF = (function() {
+                var tmpV = {};
+                var video_playing;
+                /**
+                 * @description 切换内容列时暂停当前播放的视频
+                 */
+                function pausedVBeforeChangeLi() {
+                    if (video_playing && !video_playing.ended && !video_playing.paused) {
+                        video_playing.pause();
+                    }
+                };
+                tmpV.pausedVBeforeChangeLi= pausedVBeforeChangeLi;
+                /**
+                 * @description 播放全屏 很诡异，这个方法居然不可用
+                 * @param {Object} element
+                 */
+                function launchFullScreen(element) {
+                    if (element.requestFullScreen) {
+                        element.requestFullScreen();
+                    } else if (element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if (element.webkitRequestFullScreen) {
+                        element.webkitRequestFullScreen();
+                    }
+                };
+                /**
+                 * @description 取消全屏 这个方法也是不可用
+                 * @param {Object} elem
+                 */
+                function cancelFullScrren(elem) {
+                    elem = elem || document;
+                    if (elem.cancelFullScrren) {
+                        elem.cancelFullScrren();
+                    } else if (elem.mozCancelFullScreen) {
+                        elem.mozCancelFullScreen();
+                    } else if (elem.webkitCancelFullScreen) {
+                        console.log("webkitCancelFullScreen");
+                        elem.webkitCancelFullScreen();
+                    }
+                };
+                /**
+                 * @return 返回支持的全屏函数 从网上找到了这段代码，具体网址忘记了，返回支持的全屏方法，在Safari上可用
+                 * @param {Object} elem
+                 */
+                function fullscreen(elem) {
+                    var prefix = 'webkit';
+                    if (elem[prefix + 'EnterFullScreen']) {
+                        return prefix + 'EnterFullScreen';
+                    } else if (elem[prefix + 'RequestFullScreen']) {
+                        return prefix + 'RequestFullScreen';
+                    };
+                    return false;
+                };
+                /**
+                 * @description video相关事件的绑定
+                 * @param {Object} v
+                 */
+                function videoEvent(v) {
+                    var video ="http://v26-web.douyinvod.com/57b1654692ac58f853b5107fd0d281c5/632e453b/video/tos/cn/tos-cn-ve-15c001-alinc2/09c1ba5336f5426383ec28efafcdaa9c/?a=6383&ch=11&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C3&cv=1&br=1491&bt=1491&cs=0&ds=3&ft=t2zLrtjjM9wUxRhC1tN6~O-ftZb0rHCfxtQLkagj1TRFu&mime_type=video_mp4&qs=0&rc=ZGczaDhpOzgzPDhkNDozNkBpM2dueDo6ZmV5PDMzNGkzM0BgLWMxMi81XmMxNS9jMl8uYSMuL3IwcjRnMmhgLS1kLWFzcw%3D%3D&l=2022092406415401014203702342484E2C",
+                        doc = document;
+                    video.addEventListener('play', function() {
+                        //每次只能播放一个视频对象
+                        if (video_playing && video_playing !== this) {
+                            console.log('multi')
+                            pausedVBeforeChangeLi();
+                        }
+                        video_playing = this;
+                        console.log('play');
+                        var fullscreenvideo = fullscreen(video);
+                        video[fullscreenvideo]();
+                    });
+                    video.addEventListener('click', function() {
+                        //点击时如果在播放，自动全屏；否则全屏并播放
+                        console.log('click')
+                        if (this.paused) {
+                            console.log('paused');
+                            this.play();
+                        } else {
+                            var fullscreenvideo = fullscreen(video);
+                            video[fullscreenvideo]();
+                        }
+                    })
+                    video.addEventListener('pause', function(e) {
+                        this.webkitExitFullScreen();
+                    });
+                    video.addEventListener("webkitfullscreenchange", function(e) {
+                        //TODO 未侦听到该事件
+                        console.log(3);
+                        if (!doc.webkitIsFullScreen) { //退出全屏暂停视频
+                            video.pause();
+                        };
+                    }, false);
+                    video.addEventListener("fullscreenchange ", function(e) {
+                        console.log(31);
+                        if (!doc.webkitIsFullScreen) { //退出全屏暂停视频
+                            video.pause();
+                        };
+                    }, false);
+                    video.addEventListener('ended', function() {
+                        //播放完毕，退出全屏
+                        console.log(4)
+                        this.webkitExitFullScreen();
+                    }, false);
+                };
+                tmpV.videoEvent = videoEvent;
+                return tmpV;
+            }());
