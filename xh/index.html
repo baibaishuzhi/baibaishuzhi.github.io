@@ -5,3 +5,36 @@
     </video>
     <?php } ?>
 </header>
+class Helper {
+    public static function isMobile() {
+        if (preg_match("/(iPhone|iPod|Android|ios|iPad)/i", $_SERVER['HTTP_USER_AGENT'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+.home-video {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: fill;
+    width: auto;
+    height: auto;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(../video/cover.jpg) no-repeat;
+    background-size: cover;
+}
+$('.home-video').height(window.innerHeight);
+$('.header').height(window.innerHeight);
+$(window).resize(function() {
+    $('.home-video').attr('height', window.innerHeight);
+    $('.home-video').attr('width', window.innerWidth);
+    $('.header').height(window.innerHeight);
+});
+document.getElementById('homeVideo').play();
